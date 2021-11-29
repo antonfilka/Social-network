@@ -10,6 +10,7 @@ export default function App() {
       <Header/>
       <Navbar/>
       <Profile/>
+      <footer/>
     </div>
   );
 }
