@@ -5,7 +5,7 @@ const Header = () =>{
     return(
         <header className={classes.header}>
         <img
-    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/2560px-Ford_logo_flat.svg.png"
+    src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png"
     alt="Empty"
     />
       </header>

@@ -1,19 +1,11 @@
 
-.content {
-    background-color: lightgray;
-    padding: 10px;
-}
 
 .item{
-    color: blue;
+    color: #000000;
     font-size: 20px;
 }
 .item img{
     height: 80px;
     width: 80px;
     border-radius: 40px;
-}
-
-text{
-
 }

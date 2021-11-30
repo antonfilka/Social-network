@@ -1,9 +1,12 @@
 .header {
     grid-area: h;
-    background-color: green;
+    background-color: rgb(38, 70, 83);
 }
 
 .header img {
-    margin: 14px;
-    width: 100px;
+    display: block;
+    margin: 8px auto;
+
+    /*margin: 5px;*/
+    width: 50px;
 }

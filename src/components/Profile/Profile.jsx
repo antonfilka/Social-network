@@ -4,11 +4,12 @@ import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = () =>{
     return(
-        <div className={classes.content}>
+        <div>
         <div>
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCZlf5lc5tX-0gY-y94pGS0mQdL-D0lCH2OQ&usqp=CAU"
+            src="https://images.unsplash.com/photo-1490604001847-b712b0c2f967?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3053&q=80"
             alt=""
+            className={classes.topPhoto}
           />
         </div>
         <div>ava+description</div>
