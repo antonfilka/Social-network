@@ -1,0 +1,9 @@
+.topPhoto{
+    display: block;
+    margin-left: 60px;
+    margin-right: auto;
+    margin-top: 15px;
+    border-radius: 20px;
+    height: 250px;
+    width: 90%;
+}

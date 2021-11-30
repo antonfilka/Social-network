@@ -1,0 +1,10 @@
+.dialog a{
+    font-size: 22px;
+    text-decoration: none;
+    color: black;
+}
+
+.dialog a.active{
+    font-style: inherit;
+    font-size: 27px;
+}

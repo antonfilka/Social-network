@@ -1,26 +1,10 @@
 .dialogs{
+    padding: 20px;
     display: grid;
     grid-template-columns: 2fr 10fr;
 }
 
-.dialogItems{
-    padding: 20px;
-    font-size: 22px;
-
-}
-
-.dialogItems a.active{
-    font-size: 27px;
-}
-
-.dialog a{
-    font-size: 22px;
-    text-decoration: none;
-    color: black;
-}
-
 .messages{
-    padding: 20px;
     font-size: 22px;
 }
 
