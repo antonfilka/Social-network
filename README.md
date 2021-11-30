@@ -1,1 +1,3 @@
 # Social network
+
+React application
