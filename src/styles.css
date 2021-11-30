@@ -7,22 +7,4 @@
     grid-template-columns: 2fr 10fr;
 }
 
-.header {
-    grid-area: h;
-    background-color: green;
-}
 
-.header img {
-    margin: 14px;
-    width: 100px;
-}
-
-.nav {
-    grid-area: n;
-    background-color: khaki;
-}
-
-.content {
-    grid-area: c;
-    background-color: rgb(128, 240, 234);
-}
