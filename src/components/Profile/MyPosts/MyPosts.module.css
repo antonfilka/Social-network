@@ -1,10 +1,16 @@
-.header{
-    font-size: 40px;
+.myPosts{
+    margin-right: auto;
+    margin-left: 60px;
+    margin-top: 50px;
 }
 
-.header button{
-    font-size: 15px;
-    background-color	: palevioletred;
+.header{
+    font-size: 30px;
+}
+
+.addButton button{
+    margin: auto;
+    font-size: 18px;
     border		: 2px solid #888;
     border-radius: 5px;
 }
@@ -17,4 +23,13 @@ textarea{
     max-width: 100%;
     line-height: 1.5;
     box-shadow: 1px 1px 1px #999;
+    resize: initial;
+    width: 50%;
+    height: 65px;
+}
+
+
+
+.posts{
+    margin-top: 35px;
 }

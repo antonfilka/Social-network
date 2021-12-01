@@ -5,8 +5,10 @@ const Post = (props) =>{
     return(
         <div className={classes.item}>
             <img src="https://klike.net/uploads/posts/2019-03/1551511801_1.jpg" alt="No"/>
-            <span> {props.message} </span>
-            <div>
+            <div className={classes.postText}>
+                <span> {props.message} </span>
+            </div>
+            <div className={classes.likes}>
                 <span>Likes {props.likes}</span>
             </div>
         </div>

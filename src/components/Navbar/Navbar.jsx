@@ -1,8 +1,9 @@
 import React from "react";
 import classes from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
+import LastMessageItem from "./LastMessageItem/LastMessageItem";
 
-const Navbar = () => {
+const Navbar = (props) => {
     return (
         <nav className={classes.nav}>
             <div  className={classes.item}>
@@ -22,6 +23,13 @@ const Navbar = () => {
                     <NavLink to='/settings' activeClassName={classes.active}>Settings</NavLink>
                 </div>
             </div>
+            <div className={classes.lastMessages}>
+                <div>Last messages</div>
+                <div className={classes.lastMessagesItems}>
+                    {props.state.lastMessages.map( (obj) => <LastMessageItem name={obj.name}/>) }
+                </div>
+            </div>
+
         </nav>
     );
 }

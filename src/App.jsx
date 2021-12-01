@@ -10,15 +10,15 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
 
-export default function App() {
+export default function App(props) {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-                <Navbar/>
+                <Navbar state={props.state.navbar}/>
                 <div className='content'>
-                    <Route path='/profile' component={Profile}/>
-                    <Route path='/dialogs' component={Dialogs}/>
+                    <Route path='/profile' render={ () => <Profile state={props.state.profilePage}/>}/>
+                    <Route path='/dialogs' render={ () => <Dialogs state={props.state.dialogPage}/>}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>

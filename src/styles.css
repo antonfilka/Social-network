@@ -5,7 +5,7 @@
     grid-template-areas: "h h" "n c";
     grid-gap: 10px;
     grid-auto-rows: minmax(60px, auto) 10fr;
-    grid-template-columns: 1.5fr 10fr;
+    grid-template-columns: 1.8fr 10fr;
 }
 
 .content {

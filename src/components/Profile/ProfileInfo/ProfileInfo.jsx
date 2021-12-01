@@ -12,7 +12,7 @@ const ProfileInfo = () => {
                     className={classes.topPhoto}
                 />
             </div>
-            <div> ava+description</div>
+            <div className={classes.description}> ava+description</div>
         </div>
     );
 }

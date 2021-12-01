@@ -1,8 +1,12 @@
 
 .nav {
     padding: 20px;
+    font-size: 22px;
+    color: aliceblue;
+    text-decoration: none;
     grid-area: n;
     background-size: auto;
+
     background-color: rgb(42, 157, 143);
 }
 
@@ -16,4 +20,19 @@
 
     color: gold;
     font-size: 27px;
+}
+
+.message{
+    margin-top: 50px;
+    font-size: 27px;
+}
+
+.lastMessages{
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+.lastMessagesItems{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
 }
