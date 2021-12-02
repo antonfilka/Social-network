@@ -8,7 +8,6 @@ import {Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {addMessage, updateMessageText, updatePostText} from "./Redux/State";
 
 
 export default function App(props) {
@@ -20,14 +19,12 @@ export default function App(props) {
 
                     <Route path='/profile' render={ () => <Profile
                         state={props.state.profilePage}
-                        addPost={props.addPost}
-                        updatePostText={props.updatePostText}
+                        dispatch={props.dispatch}
                     />}/>
 
                     <Route path='/dialogs' render={ () => <Dialogs
                         state={props.state.dialogPage}
-                        addMessage={props.addMessage}
-                        updateMessageText={props.updateMessageText}
+                        dispatch={props.dispatch}
                     />}/>
 
                     <Route path='/news' component={News}/>
