@@ -1,31 +1,26 @@
 import React from "react";
 import Header from "./components/Header/Header";
-import Navbar from "./components/Navbar/Navbar";
+import NavBar from "./components/Navbar/NavBar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
 import "./styles.css";
 import {Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
 export default function App(props) {
     return (
             <div className="app-wrapper">
                 <Header/>
-                <Navbar state={props.state.navBar}/>
+                <NavBar state={props.store.getState().navBar}/>
+
                 <div className='content'>
 
-                    <Route path='/profile' render={ () => <Profile
-                        state={props.state.profilePage}
-                        dispatch={props.dispatch}
-                    />}/>
+                    <Route path='/profile' render={ () => <Profile store={props.store}/>}/>
 
-                    <Route path='/dialogs' render={ () => <Dialogs
-                        state={props.state.dialogsPage}
-                        dispatch={props.dispatch}
-                    />}/>
+                    <Route path='/dialogs' render={ () => <DialogsContainer store={props.store}/>}/>
 
                     <Route path='/news' component={News}/>
 

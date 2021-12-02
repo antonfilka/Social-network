@@ -3,7 +3,7 @@ import classes from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 import LastMessageItem from "./LastMessageItem/LastMessageItem";
 
-const Navbar = (props) => {
+const NavBar = (props) => {
     return (
         <nav className={classes.nav}>
             <div  className={classes.item}>
@@ -34,4 +34,4 @@ const Navbar = (props) => {
     );
 }
 
-export default Navbar;
+export default NavBar;
