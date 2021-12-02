@@ -14,7 +14,7 @@ export default function App(props) {
     return (
             <div className="app-wrapper">
                 <Header/>
-                <Navbar state={props.state.navbar}/>
+                <Navbar state={props.state.navBar}/>
                 <div className='content'>
 
                     <Route path='/profile' render={ () => <Profile
@@ -23,7 +23,7 @@ export default function App(props) {
                     />}/>
 
                     <Route path='/dialogs' render={ () => <Dialogs
-                        state={props.state.dialogPage}
+                        state={props.state.dialogsPage}
                         dispatch={props.dispatch}
                     />}/>
 

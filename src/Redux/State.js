@@ -1,5 +1,5 @@
-import {dialogPageReducer} from "./dialogPageReducer";
-import {profilePageReducer} from "./profilePageReducer";
+import {dialogsReducer} from "./dialogs-reducer";
+import {profileReducer} from "./profile-reducer";
 
 
 let store = {
@@ -49,11 +49,10 @@ let store = {
     },
 
     dispatch (action){
-        this._state.dialogPage = dialogPageReducer(this._state.dialogPage, action);
-        this._state.profilePage = profilePageReducer(this._state.profilePage, action);
+        this._state.dialogPage = dialogsReducer(this._state.dialogPage, action);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
         this.renderEntireTree(this._state);
     }
-
 };
 
 export default store;
