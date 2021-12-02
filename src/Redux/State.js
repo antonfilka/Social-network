@@ -30,7 +30,7 @@ let store = {
                 {id:2, text:"I'm back from Germany", likesCount:17},
                 {id:3, text:"Let's play football", likesCount:33},
             ],
-            newPostText: {text: "Enter post text.."}
+            newPostText: "Enter post text.."
         }
     },
 
@@ -83,10 +83,14 @@ let store = {
             this._state.profilePage.posts.push(post);
             this._state.profilePage.newPostText = " ";
             this.renderEntireTree(this._state);
-        } else if (action.type === 'UPDATE-POST-TEXT'){
+        }
+
+        else if (action.type === 'UPDATE-POST-TEXT'){
             this._state.profilePage.newPostText = action.newText;
             this.renderEntireTree(this._state);
-        } else if (action.type === 'ADD-MESSAGE') {
+        }
+
+        else if (action.type === 'ADD-MESSAGE') {
             const message = {
                 id: 7,
                 message: action.messageText,
@@ -94,7 +98,9 @@ let store = {
             this._state.dialogPage.messages.push(message);
             this._state.dialogPage.updateMessage = " ";
             this.renderEntireTree(this._state);
-        }else if (action.type === 'UPDATE-MESSAGE-TEXT') {
+        }
+
+        else if (action.type === 'UPDATE-MESSAGE-TEXT') {
             this._state.dialogPage.updateMessage = action.newText;
             this.renderEntireTree(this._state);
         }
