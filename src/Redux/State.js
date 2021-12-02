@@ -44,8 +44,7 @@ let store = {
         console.log(this._state)
     },
 
-
-    addPost (postText) {
+    _addPost (postText) {
         const post = {
             id: 7,
             text: postText,
@@ -55,11 +54,11 @@ let store = {
         this._state.profilePage.newPostText = " ";
         this.renderEntireTree(this._state);
     },
-    updatePostText (newText) {
+    _updatePostText (newText) {
         this._state.profilePage.newPostText = newText;
         this.renderEntireTree(this._state);
     },
-    addMessage (messageText) {
+    _addMessage (messageText) {
         const message = {
             id: 7,
             message: messageText,
@@ -68,41 +67,26 @@ let store = {
         this._state.dialogPage.updateMessage = " ";
         this.renderEntireTree(this._state);
     },
-    updateMessageText (newText) {
+    _updateMessageText (newText) {
         this._state.dialogPage.updateMessage = newText;
         this.renderEntireTree(this._state);
     },
 
     dispatch (action){
         if (action.type === 'ADD-POST'){
-            const post = {
-                id: 7,
-                text: action.postText,
-                likesCount: 23
-            };
-            this._state.profilePage.posts.push(post);
-            this._state.profilePage.newPostText = " ";
-            this.renderEntireTree(this._state);
+            this._addPost(action.postText)
         }
 
         else if (action.type === 'UPDATE-POST-TEXT'){
-            this._state.profilePage.newPostText = action.newText;
-            this.renderEntireTree(this._state);
+            this._updatePostText(action.newText)
         }
 
         else if (action.type === 'ADD-MESSAGE') {
-            const message = {
-                id: 7,
-                message: action.messageText,
-            };
-            this._state.dialogPage.messages.push(message);
-            this._state.dialogPage.updateMessage = " ";
-            this.renderEntireTree(this._state);
+            this._addMessage(action.messageText)
         }
 
         else if (action.type === 'UPDATE-MESSAGE-TEXT') {
-            this._state.dialogPage.updateMessage = action.newText;
-            this.renderEntireTree(this._state);
+            this._updateMessageText(action.newText)
         }
     }
 
