@@ -44,10 +44,11 @@ let store = {
         console.log(this._state)
     },
 
-    _addPost (postText) {
+    _addPost () {
+
         const post = {
             id: 7,
-            text: postText,
+            text: this._state.profilePage.newPostText,
             likesCount: 23
         };
         this._state.profilePage.posts.push(post);
@@ -58,10 +59,10 @@ let store = {
         this._state.profilePage.newPostText = newText;
         this.renderEntireTree(this._state);
     },
-    _addMessage (messageText) {
+    _addMessage () {
         const message = {
             id: 7,
-            message: messageText,
+            message: this._state.dialogPage.updateMessage,
         };
         this._state.dialogPage.messages.push(message);
         this._state.dialogPage.updateMessage = " ";
@@ -74,7 +75,7 @@ let store = {
 
     dispatch (action){
         if (action.type === 'ADD-POST'){
-            this._addPost(action.postText)
+            this._addPost()
         }
 
         else if (action.type === 'UPDATE-POST-TEXT'){
@@ -82,7 +83,7 @@ let store = {
         }
 
         else if (action.type === 'ADD-MESSAGE') {
-            this._addMessage(action.messageText)
+            this._addMessage()
         }
 
         else if (action.type === 'UPDATE-MESSAGE-TEXT') {
@@ -90,6 +91,6 @@ let store = {
         }
     }
 
-}
+};
 
 export default store;
