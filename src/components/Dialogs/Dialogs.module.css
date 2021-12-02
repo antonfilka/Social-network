@@ -11,3 +11,25 @@
 .message{
 
 }
+
+.messages textarea{
+    margin-top: 40px;
+    background-color: lightgrey;
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    box-shadow: 1px 1px 1px #999;
+    resize: initial;
+    width: 50%;
+    height: 65px;
+}
+
+.messages button{
+    margin-left: 390px;
+    margin-top: 15px;
+    border		: 1px solid #888;
+    border-radius: 5px;
+
+}
