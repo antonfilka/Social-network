@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React from "react";
 import {addPostActionCreator, updatePostActionCreator} from "../../../Redux/profile-reducer";
 import MyPosts from "./MyPosts";
@@ -11,7 +10,6 @@ const mapStateToProps = (state) => {
         posts: state.profilePage.posts
     }
 }
-
 const mapDispatchToProps = (dispatch) => {
     return{
         addPost: () => {dispatch(addPostActionCreator())},
