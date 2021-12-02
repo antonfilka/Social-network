@@ -1,3 +1,5 @@
+import news from "../components/News/News";
+
 const  ADD_POST = 'ADD_POST';
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
 
@@ -12,20 +14,27 @@ const initialState = {
 
 export const profileReducer = (state = initialState, action) => {
     switch(action.type){
-        case ADD_POST:
-            const post = {
+        case ADD_POST: {
+            const newPost = {
                 id: 7,
                 text: state.newPostText,
                 likesCount: 23
             };
-            state.posts.push(post);
-            state.newPostText = "";
-            return state;
-        case UPDATE_POST_TEXT:
-            state.newPostText = action.newText;
-            return state;
+            let newState = {...state};
+            newState.posts = [...state.posts];
+            newState.posts.push(newPost);
+            newState.newPostText = "";
+            return newState;
+        }
+
+        case UPDATE_POST_TEXT: {
+            let newState = {...state}
+            newState.newPostText = action.newText;
+            return newState;
+        }
         default:
             return state;
+
     }
 
 

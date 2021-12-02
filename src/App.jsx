@@ -9,18 +9,18 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
-
 export default function App(props) {
     return (
-            <div className="app-wrapper">
-                <Header/>
-                <NavBar state={props.store.getState().navBar}/>
+
+        <div className="app-wrapper">
+            <Header/>
+            <NavBar state={props.store.getState().navBar}/>
 
                 <div className='content'>
 
-                    <Route path='/profile' render={ () => <Profile store={props.store}/>}/>
+                    <Route path='/profile' render={() => <Profile store={props.store}/>}/>
 
-                    <Route path='/dialogs' render={ () => <DialogsContainer store={props.store}/>}/>
+                    <Route path='/dialogs' render={() => <DialogsContainer/>}/>
 
                     <Route path='/news' component={News}/>
 
@@ -29,6 +29,6 @@ export default function App(props) {
                     <Route path='/settings' component={Settings}/>
 
                 </div>
-            </div>
+        </div>
     );
 }

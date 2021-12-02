@@ -9,7 +9,6 @@ let reducers = combineReducers({
     navBar: navBarReducer
 })
 
-
 let store = createStore(reducers)
 
 
