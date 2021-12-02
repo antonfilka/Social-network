@@ -1,3 +1,8 @@
+const  ADD_POST = 'ADD_POST';
+const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
+const  ADD_MESSAGE = 'ADD_MESSAGE';
+const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT';
+
 let store = {
     _state: {
         navbar:{
@@ -73,6 +78,8 @@ let store = {
         this.renderEntireTree(this._state);
     },
 
+
+
     dispatch (action){
         if (action.type === 'ADD-POST'){
             this._addPost()
@@ -92,5 +99,11 @@ let store = {
     }
 
 };
+
+export const addPostActionCreator= () => ({type: ADD_POST}) ;
+export const addMessageActionCreator= () => ({type: ADD_MESSAGE}) ;
+export const updatePostActionCreator= (newText) => ({type: UPDATE_POST_TEXT, newText: newText}) ;
+export const updateMessageActionCreator= (newText) => ({type: UPDATE_MESSAGE_TEXT, newText: newText}) ;
+
 
 export default store;
