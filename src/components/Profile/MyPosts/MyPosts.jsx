@@ -1,14 +1,15 @@
 import React from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
+import {addPostActionCreator, updatePostActionCreator} from "../../../Redux/profilePageReducer";
 
 const MyPosts = (props) =>{
 
     let newPostElement = React.createRef();
 
-    let addPost = () => props.dispatch({type: 'ADD-POST'});
+    let addPost = () => props.dispatch(addPostActionCreator());
 
-    let onPostChange = () => props.dispatch({type: 'UPDATE-POST-TEXT', newText: newPostElement.current.value});
+    let onPostChange = () => props.dispatch(updatePostActionCreator(newPostElement.current.value));
 
     return(
         <div className={classes.myPosts}>
