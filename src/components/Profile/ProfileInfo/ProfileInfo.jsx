@@ -18,7 +18,7 @@ const ProfileInfo = () => {
                 </div>
                 <div className={classes.description}>
                     <div>
-                        Profile info:
+                        Profile info
                     </div>
                     <div>
                         <ul>
