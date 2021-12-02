@@ -12,7 +12,23 @@ const ProfileInfo = () => {
                     className={classes.topPhoto}
                 />
             </div>
-            <div className={classes.description}> ava+description</div>
+            <div className={classes.profileInfo}>
+                <div>
+                    <img src="https://klike.net/uploads/posts/2019-03/1551511801_1.jpg" alt="No"/>
+                </div>
+                <div className={classes.description}>
+                    <div>
+                        Profile info:
+                    </div>
+                    <div>
+                        <ul>
+                            <li>Age: 22 years</li>
+                            <li>City: Minsk</li>
+                            <li>Status: Let's code!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

@@ -29,7 +29,6 @@ let store = {
                 {id:1, text:'Hello  world', likesCount:3},
                 {id:2, text:"I'm back from Germany", likesCount:17},
                 {id:3, text:"Let's play football", likesCount:33},
-                {id:4, text:'I have a new laptop', likesCount:2},
             ],
             newPostText: {text: "Enter post text.."}
         }
