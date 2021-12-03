@@ -1,4 +1,3 @@
-import news from "../components/News/News";
 
 const  ADD_POST = 'ADD_POST';
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';

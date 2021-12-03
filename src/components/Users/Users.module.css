@@ -1,0 +1,50 @@
+.wrapper{
+    display: grid;
+    padding: 15px 0 0 40px;
+    grid-template-columns: 1fr 10fr;
+}
+.wrapper img{
+    width: 100px;
+    height: 100px;
+    border-radius: 22px;
+    box-shadow: 1px 1px 1px #1b4394;
+}
+
+.wrapper button{
+    display: block;
+    margin: auto;
+
+}
+
+.lowWrapper{
+    display: grid;
+    padding: 15px 0 0 40px;
+    grid-template-columns: 2fr 2fr 6fr;
+    grid-template-rows: 0.5fr 1fr;
+}
+
+.name{
+    margin-top: auto;
+    margin-bottom: auto;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+.status{
+    margin-top: 5px;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+.country{
+    margin-top: auto;
+    margin-bottom: auto;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+.town{
+    margin-top: 5px;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+
+
