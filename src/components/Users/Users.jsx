@@ -1,36 +1,15 @@
 import React from 'react';
 import styles from './Users.module.css';
+import axios from "axios";
 
 let Users = (props) => {
     if (props.users.length === 0) {
-        props.setUsers([
-                {
-                    id: 1,
-                    photoUrl: 'https://klike.net/uploads/posts/2019-03/1551511801_1.jpg',
-                    followed: false,
-                    fullName: 'Anton',
-                    status: 'I like cats',
-                    location: {city: 'Minsk', country: 'Belarus'}
-                },
-                {
-                    id: 2,
-                    photoUrl: 'https://klike.net/uploads/posts/2019-03/1551511801_1.jpg',
-                    followed: true,
-                    fullName: 'Vlad',
-                    status: 'I like bears',
-                    location: {city: 'Moscow', country: 'Russia'}
-                },
-                {
-                    id: 3,
-                    photoUrl: 'https://klike.net/uploads/posts/2019-03/1551511801_1.jpg',
-                    followed: false,
-                    fullName: 'Tasya',
-                    status: 'I like dogs',
-                    location: {city: 'Kiev', country: 'Ukraine'}
-                }
-            ]
-        )
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then( response => {
+            props.setUsers(response.data.items)
+        })
     }
+
+    const defaultPhoto = "https://i.pinimg.com/564x/ae/5c/47/ae5c47d4a6ac53b79dc88d763b4c8095.jpg";
 
     return <div>
         {
@@ -38,7 +17,7 @@ let Users = (props) => {
                 <div className={styles.wrapper}>
                     <div>
                         <div>
-                            <img src={u.photoUrl} className={styles.userPhoto} alt='No'/>
+                            <img src={u.photos.small != null ? u.photos.small : defaultPhoto} className={styles.userPhoto} alt='No'/>
                         </div>
                         <div>
                             {u.followed
@@ -53,12 +32,12 @@ let Users = (props) => {
                     </div>
                     <div className={styles.lowWrapper}>
 
-                            <div className={styles.name}>Name: {u.fullName}</div>
+                            <div className={styles.name}>Name: {u.name}</div>
                             <div className={styles.status}>Status: {u.status}</div>
 
 
-                            <div className={styles.country}>Country: {u.location.country}</div>
-                            <div className={styles.town}>City: {u.location.city}</div>
+                            <div className={styles.country}>"Country: u.location.country"</div>
+                            <div className={styles.town}>"City: u.location.city"</div>
 
                     </div>
                 </div>

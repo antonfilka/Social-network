@@ -19,7 +19,7 @@
 .lowWrapper{
     display: grid;
     padding: 15px 0 0 40px;
-    grid-template-columns: 2fr 2fr 6fr;
+    grid-template-columns: 2fr 2fr 4fr;
     grid-template-rows: 0.5fr 1fr;
 }
 
