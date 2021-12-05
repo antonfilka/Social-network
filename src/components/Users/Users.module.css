@@ -16,6 +16,27 @@
 
 }
 
+.paginator{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    margin-left: 200px;
+    margin-right: 400px;
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+.paginatorItem{
+    margin: auto;
+    cursor: pointer;
+}
+
+.activePage{
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 27px;
+    margin: auto;
+}
+
 .lowWrapper{
     display: grid;
     padding: 15px 0 0 40px;
