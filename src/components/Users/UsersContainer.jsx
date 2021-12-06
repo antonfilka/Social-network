@@ -1,34 +1,19 @@
-import Users from "./UsersC";
+
 import {connect} from "react-redux";
-import {followAC, setCurrPageAC, setTotalUsersAC, setUsersAC, unflAC} from "../../Redux/users-reducer";
+import {follow, setCurrentPage, setIsFetching, setTotalUsers, setUsers, unfollow} from "../../Redux/users-reducer";
+import UsersC from "./UsersC";
 
 let mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
         currentPage: state.usersPage.currentPage,
         totalUsers: state.usersPage.totalUsers,
-        pageSize: state.usersPage.screenSize
+        screenSize: state.usersPage.screenSize,
+        isFetching: state.usersPage.isFetching
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId));
-        },
-        unfollow: (userId) => {
-            dispatch(unflAC(userId));
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users));
-        },
-        setCurrentPage: (currentPage) => {
-            dispatch(setCurrPageAC(currentPage));
-        },
-        setTotalUsers: (totalUsers) => {
-            dispatch(setTotalUsersAC(totalUsers))
-        }
-    }
-}
 
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+
+export const UsersContainer = connect(mapStateToProps,
+    {follow, unfollow, setUsers, setTotalUsers, setCurrentPage, setIsFetching})(UsersC);
