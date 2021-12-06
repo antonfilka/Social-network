@@ -1,0 +1,7 @@
+.preloader img{
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 300px;
+}
