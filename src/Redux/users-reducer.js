@@ -8,7 +8,7 @@ const SET_IS_FETCHING = 'SET_IS_FETCHING';
 let initialState = {
     users: [ ],
     currentPage: 1,
-    screenSize: 20,
+    screenSize: 40,
     totalUsers: 30,
     isFetching: true
 };

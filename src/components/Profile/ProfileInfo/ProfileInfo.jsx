@@ -22,7 +22,7 @@ const ProfileInfo = () => {
                     </div>
                     <div>
                         <ul>
-                            <li>Age: 22 years</li>
+                            <li>Age: 23 years</li>
                             <li>City: Minsk</li>
                             <li>Status: Let's code!</li>
                         </ul>
