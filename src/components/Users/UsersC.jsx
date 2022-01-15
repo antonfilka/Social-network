@@ -23,6 +23,7 @@ class UsersC extends React.Component{
             this.props.setIsFetching(false)
         })
     }
+    currentPage;
 
 
     render() {
@@ -34,14 +35,19 @@ class UsersC extends React.Component{
         }
         return (
             <div>
+
                 { this.props.isFetching ? <Preloader/> : null}
+
                 <div className={styles.paginator}>
+
                     {pages.map( (n) => n < 11 && (<span
                         onClick={ () => {this.onChange(n)} }
                         className={n === this.props.currentPage
                             ? styles.activePage
                             : styles.paginatorItem} > {n} </span>))}
+
                 </div>
+
                 {
 
                     this.props.users.map(u => <div key={u.id}>
@@ -61,11 +67,11 @@ class UsersC extends React.Component{
 
                                     </div>
                                 </div>
+
                                 <div className={styles.lowWrapper}>
 
                                     <div className={styles.name}>Name: {u.name}</div>
                                     <div className={styles.status}>Status: {u.status}</div>
-
 
                                     <div className={styles.country}>"Country: u.location.country"</div>
                                     <div className={styles.town}>"City: u.location.city"</div>

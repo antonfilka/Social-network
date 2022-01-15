@@ -10,9 +10,8 @@ import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {UsersContainer} from "./components/Users/UsersContainer";
 
-export default function App(props) {
+const App = (props) => {
     return (
-
         <div className="app-wrapper">
             <Header/>
             <NavBar state={props.store.getState().navBar}/>
@@ -35,3 +34,5 @@ export default function App(props) {
         </div>
     );
 }
+
+export default App
