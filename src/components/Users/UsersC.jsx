@@ -3,16 +3,16 @@ import styles from './Users.module.css';
 import axios from "axios";
 import Preloader from "../../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
+import {UserAPI} from "../../api/api";
 
 
 class UsersC extends React.Component{
 
     componentDidMount() {
         this.props.setIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.screenSize}`,
-            {withCredentials: true}).then( response => {
-            this.props.setUsers(response.data.items);
-            this.props.setTotalUsers(response.data.totalCount)
+       UserAPI.getUsers(this.props.currentPage, this.props.screenSize).then( response => {
+            this.props.setUsers(response.items);
+            this.props.setTotalUsers(response.totalCount)
             this.props.setIsFetching(false)
         })
     }
@@ -20,9 +20,9 @@ class UsersC extends React.Component{
     onChange = (pageNumber) => {
         this.props.setIsFetching(true)
         this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.screenSize}`,
-            {withCredentials: true}).then( response => {
-            this.props.setUsers(response.data.items);
+
+        UserAPI.getUsers2(pageNumber, this.props.screenSize).then( response => {
+            this.props.setUsers(response.items);
             this.props.setIsFetching(false)
         })
     }
@@ -56,6 +56,8 @@ class UsersC extends React.Component{
                                     <div>
                                         {u.followed
                                             ? <button onClick={() => {
+
+
                                                 axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
                                                     {withCredentials: true, headers: {
                                                     "API-KEY": "97519653-c16a-489b-b268-7ad98a23a451"}
