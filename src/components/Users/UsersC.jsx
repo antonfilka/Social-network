@@ -9,7 +9,8 @@ class UsersC extends React.Component{
 
     componentDidMount() {
         this.props.setIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.screenSize}`).then( response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.screenSize}`,
+            {withCredentials: true}).then( response => {
             this.props.setUsers(response.data.items);
             this.props.setTotalUsers(response.data.totalCount)
             this.props.setIsFetching(false)
@@ -19,7 +20,8 @@ class UsersC extends React.Component{
     onChange = (pageNumber) => {
         this.props.setIsFetching(true)
         this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.screenSize}`).then( response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.screenSize}`,
+            {withCredentials: true}).then( response => {
             this.props.setUsers(response.data.items);
             this.props.setIsFetching(false)
         })
@@ -34,21 +36,15 @@ class UsersC extends React.Component{
         }
         return (
             <div>
-
                 { this.props.isFetching ? <Preloader/> : null}
-
                 <div className={styles.paginator}>
-
                     {pages.map( (n) => n < 11 && (<span
                         onClick={ () => {this.onChange(n)} }
                         className={n === this.props.currentPage
                             ? styles.activePage
                             : styles.paginatorItem} > {n} </span>))}
-
                 </div>
-
                 {
-
                     this.props.users.map(u => <div key={u.id}>
                             <div className={styles.wrapper}>
                                 <div>
@@ -60,10 +56,27 @@ class UsersC extends React.Component{
                                     <div>
                                         {u.followed
                                             ? <button onClick={() => {
-                                                this.props.unfollow(u.id)
+                                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                                                    {withCredentials: true, headers: {
+                                                    "API-KEY": "97519653-c16a-489b-b268-7ad98a23a451"}
+                                                    }).then( response => {
+                                                    if(response.data.resultCode === 0 ){
+                                                        this.props.unfollow(u.id)
+                                                    }
+                                                })
                                             }}>Unfollow</button>
                                             : <button onClick={() => {
-                                                this.props.follow(u.id)
+
+                                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{},
+                                                    {withCredentials: true, headers: {
+                                                            "API-KEY": "97519653-c16a-489b-b268-7ad98a23a451"}}).then( response => {
+                                                    if(response.data.resultCode === 0 ){
+                                                        this.props.follow(u.id)
+                                                    }
+                                                    else if(response.data.resultCode === 1){
+                                                        alert(response.data.messages)
+                                                    }
+                                                })
                                             }}>Follow</button>}
 
                                     </div>
