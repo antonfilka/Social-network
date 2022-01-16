@@ -17,8 +17,11 @@ let Users = (props) => {
                 <div className={styles.wrapper}>
                     <div>
                         <div>
-                            <img src={u.photos.small != null ? u.photos.small : defaultPhoto} className={styles.userPhoto} alt='No'/>
+
+                                <img src={u.photos.small != null ? u.photos.small : defaultPhoto} className={styles.userPhoto} alt='No'/>
+
                         </div>
+
                         <div>
                             {u.followed
                                 ? <button onClick={() => {

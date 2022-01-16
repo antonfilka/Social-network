@@ -2,23 +2,23 @@ import React from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
 
+
+
 const MyPosts = (props) =>{
 
     let onAddPost = () => props.addPost();
     let onPostChange = (event) => props.postChange(event.target.value);
 
+
     return(
         <div className={classes.myPosts}>
 
             <div className={classes.header}>
-
-                <div><h3>My posts</h3></div>
-
+                <div><h3>Posts</h3></div>
                 <textarea onChange={ onPostChange } value={props.newPostText}/>
                 <div className={classes.addButton}>
                     <button onClick={ onAddPost }>Add post</button>
                 </div>
-
             </div>
 
             <div className={classes.posts}>

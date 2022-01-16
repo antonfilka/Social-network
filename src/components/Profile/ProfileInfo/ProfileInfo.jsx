@@ -2,7 +2,8 @@ import React from "react";
 import classes from './ProfileInfo.module.css'
 
 
-const ProfileInfo = () => {
+
+const ProfileInfo = (props) => {
     return (
         <div>
             <div>
@@ -14,7 +15,7 @@ const ProfileInfo = () => {
             </div>
             <div className={classes.profileInfo}>
                 <div>
-                    <img src="https://klike.net/uploads/posts/2019-03/1551511801_1.jpg" alt="No"/>
+                    <img src={props.profile.photos.small || 'https://klike.net/uploads/posts/2019-03/1551511801_1.jpg'} alt="No"/>
                 </div>
                 <div className={classes.description}>
                     <div>
@@ -22,9 +23,12 @@ const ProfileInfo = () => {
                     </div>
                     <div>
                         <ul>
-                            <li>Age: 23 years</li>
-                            <li>City: Minsk</li>
-                            <li>Status: Let's code!</li>
+                            <li>Full Name: {props.profile.fullName}</li>
+                            <li>ID: {props.profile.userId}</li>
+                            <li>Want's to be: {props.profile.lookingForAJobDescription || "Not entered"}</li>
+                            <li>GitHub: {props.profile.contacts.github || "Not entered" }</li>
+                            <li>VK: {props.profile.contacts.vk || "Not entered"}</li>
+
                         </ul>
                     </div>
                 </div>
@@ -32,5 +36,7 @@ const ProfileInfo = () => {
         </div>
     );
 }
+
+
 
 export default ProfileInfo;
