@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Users.module.css';
 import axios from "axios";
 import Preloader from "../../common/Preloader/Preloader";
+import {NavLink} from "react-router-dom";
 
 
 class UsersC extends React.Component{
@@ -23,8 +24,6 @@ class UsersC extends React.Component{
             this.props.setIsFetching(false)
         })
     }
-    currentPage;
-
 
     render() {
         let defaultPhoto = "https://i.pinimg.com/564x/ae/5c/47/ae5c47d4a6ac53b79dc88d763b4c8095.jpg";
@@ -54,7 +53,9 @@ class UsersC extends React.Component{
                             <div className={styles.wrapper}>
                                 <div>
                                     <div>
-                                        <img src={u.photos.small != null ? u.photos.small : defaultPhoto} className={styles.userPhoto} alt='No'/>
+                                        <NavLink to={'/profile/' + u.id}>
+                                            <img src={u.photos.small != null ? u.photos.small : defaultPhoto} className={styles.userPhoto} alt='No'/>
+                                        </NavLink>
                                     </div>
                                     <div>
                                         {u.followed

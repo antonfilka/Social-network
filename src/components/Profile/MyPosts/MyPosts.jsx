@@ -14,7 +14,7 @@ const MyPosts = (props) =>{
         <div className={classes.myPosts}>
 
             <div className={classes.header}>
-                <div><h3>My posts</h3></div>
+                <div><h3>Posts</h3></div>
                 <textarea onChange={ onPostChange } value={props.newPostText}/>
                 <div className={classes.addButton}>
                     <button onClick={ onAddPost }>Add post</button>
