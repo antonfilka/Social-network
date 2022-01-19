@@ -56,8 +56,7 @@ class UsersC extends React.Component{
                                     <div>
                                         {u.followed
                                             ? <button onClick={() => {
-
-
+                                                this.props.setSubscribing(true, u.id)
                                                 axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
                                                     {withCredentials: true, headers: {
                                                     "API-KEY": "97519653-c16a-489b-b268-7ad98a23a451"}
@@ -65,10 +64,14 @@ class UsersC extends React.Component{
                                                     if(response.data.resultCode === 0 ){
                                                         this.props.unfollow(u.id)
                                                     }
+                                                    else if(response.data.resultCode === 1){
+                                                        alert(response.data.messages)
+                                                    }
+                                                    this.props.setSubscribing(false, u.id)
                                                 })
-                                            }}>Unfollow</button>
+                                            }} disabled={this.props.subscribing}>Unfollow</button>
                                             : <button onClick={() => {
-
+                                                this.props.setSubscribing(true, u.id)
                                                 axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{},
                                                     {withCredentials: true, headers: {
                                                             "API-KEY": "97519653-c16a-489b-b268-7ad98a23a451"}}).then( response => {
@@ -78,8 +81,9 @@ class UsersC extends React.Component{
                                                     else if(response.data.resultCode === 1){
                                                         alert(response.data.messages)
                                                     }
+                                                    this.props.setSubscribing(false, u.id)
                                                 })
-                                            }}>Follow</button>}
+                                            }} disabled={this.props.subscribing}>Follow</button>}
 
                                     </div>
                                 </div>

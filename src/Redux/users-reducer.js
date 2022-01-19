@@ -4,13 +4,15 @@ const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS = 'SET_TOTAL_USERS';
 const SET_IS_FETCHING = 'SET_IS_FETCHING';
+const SET_SUBSCRIBING = 'SET_SUBSCRIBING'
 
 let initialState = {
     users: [ ],
     currentPage: 1,
     screenSize: 40,
     totalUsers: 30,
-    isFetching: true
+    isFetching: true,
+    subscribing: false
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -46,8 +48,11 @@ export const usersReducer = (state = initialState, action) => {
         }
         case SET_IS_FETCHING:
             return {...state, isFetching: action.isFetching}
+        case SET_SUBSCRIBING:
+            return {...state, subscribing: action.data.subscribing}
         default:
             return state;
+
     }
 }
 
@@ -58,5 +63,6 @@ export const setUsers = (users) => ({type: SET_USERS, users })
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage })
 export const setTotalUsers = (totalUsers) => ({type: SET_TOTAL_USERS, totalUsers })
 export const setIsFetching = (isFetching) => ({type: SET_IS_FETCHING, isFetching })
+export const setSubscribing = (subscribing, id) => ({type: SET_SUBSCRIBING, data: {subscribing, id}})
 
 export default usersReducer;
