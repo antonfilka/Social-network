@@ -18,7 +18,6 @@ class HeaderContainer extends React.Component {
             }
         })
         this.props.setIsFetching(false);
-        debugger;
     }
 
     render() {

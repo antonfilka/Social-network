@@ -4,6 +4,7 @@ import axios from "axios";
 import Preloader from "../../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
 import {UserAPI} from "../../api/api";
+import {setSubscribing} from "../../Redux/users-reducer";
 
 
 class UsersC extends React.Component{
@@ -56,35 +57,31 @@ class UsersC extends React.Component{
                                     <div>
                                         {u.followed
                                             ? <button onClick={() => {
-                                                this.props.setSubscribing(true, u.id)
-                                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
-                                                    {withCredentials: true, headers: {
-                                                    "API-KEY": "97519653-c16a-489b-b268-7ad98a23a451"}
-                                                    }).then( response => {
-                                                    if(response.data.resultCode === 0 ){
-                                                        this.props.unfollow(u.id)
+                                                this.props.setSubscribing({subscribing: true, id: u.id})
+
+                                                UserAPI.unfollowUser(u.id).then( response => {
+                                                    if(response.resultCode === 0 ){
+                                                        this.props.unfollow(u.id);
                                                     }
-                                                    else if(response.data.resultCode === 1){
-                                                        alert(response.data.messages)
-                                                    }
-                                                    this.props.setSubscribing(false, u.id)
+                                                }).catch(err => {
+                                                    alert(err);
+                                                    this.props.setSubscribing({subscribing: false, id: u.id});
                                                 })
-                                            }} disabled={this.props.subscribing}>Unfollow</button>
+                                                //debugger
+                                            }} disabled={this.props.subscribing.some(uId => uId === u.id)}>Unfollow</button>
                                             : <button onClick={() => {
-                                                this.props.setSubscribing(true, u.id)
-                                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{},
-                                                    {withCredentials: true, headers: {
-                                                            "API-KEY": "97519653-c16a-489b-b268-7ad98a23a451"}}).then( response => {
-                                                    if(response.data.resultCode === 0 ){
+                                                this.props.setSubscribing({subscribing: true, id: u.id})
+                                                UserAPI.followUser(u.id).then( response => {
+                                                    if(response.resultCode === 0 ){
                                                         this.props.follow(u.id)
                                                     }
-                                                    else if(response.data.resultCode === 1){
-                                                        alert(response.data.messages)
-                                                    }
-                                                    this.props.setSubscribing(false, u.id)
-                                                })
-                                            }} disabled={this.props.subscribing}>Follow</button>}
 
+                                                }).catch(err => {
+                                                    alert(err);
+                                                    this.props.setSubscribing({subscribing: false, id: u.id});
+
+                                                })
+                                            }} disabled={this.props.subscribing.some(uId => uId === u.id)}>Follow</button>}
                                     </div>
                                 </div>
 

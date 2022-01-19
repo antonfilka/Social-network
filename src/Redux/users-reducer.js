@@ -1,3 +1,5 @@
+import news from "../components/News/News";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -12,7 +14,7 @@ let initialState = {
     screenSize: 40,
     totalUsers: 30,
     isFetching: true,
-    subscribing: false
+    subscribing: []
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -48,8 +50,22 @@ export const usersReducer = (state = initialState, action) => {
         }
         case SET_IS_FETCHING:
             return {...state, isFetching: action.isFetching}
-        case SET_SUBSCRIBING:
-            return {...state, subscribing: action.data.subscribing}
+        case SET_SUBSCRIBING:{
+
+            if(action.data.subscrib){
+                let pushed = [...state.subscribing]
+                pushed.push(action.data.id)
+                return {...state, subscribing: [...pushed]}
+            }
+            else{
+                return {...state, subscribing: state.subscribing.map(id => {
+                    if(!(action.data.id === id)){
+                        return id;
+                    }
+                    })}
+            }
+        }
+
         default:
             return state;
 
@@ -63,6 +79,6 @@ export const setUsers = (users) => ({type: SET_USERS, users })
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage })
 export const setTotalUsers = (totalUsers) => ({type: SET_TOTAL_USERS, totalUsers })
 export const setIsFetching = (isFetching) => ({type: SET_IS_FETCHING, isFetching })
-export const setSubscribing = (subscribing, id) => ({type: SET_SUBSCRIBING, data: {subscribing, id}})
+export const setSubscribing = (sid) => ({type: SET_SUBSCRIBING, data: {subscrib: sid.subscribing, id: sid.id}})
 
 export default usersReducer;
