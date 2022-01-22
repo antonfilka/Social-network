@@ -74,6 +74,7 @@ class UsersC extends React.Component{
                                     </div>
                                 </div>
 
+
                                 <div className={styles.lowWrapper}>
 
                                     <div className={styles.name}>Name: {u.name}</div>
