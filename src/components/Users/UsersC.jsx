@@ -1,11 +1,8 @@
 import React from 'react';
 import styles from './Users.module.css';
-import axios from "axios";
 import Preloader from "../../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
 import {UserAPI} from "../../api/api";
-import {setSubscribing} from "../../Redux/users-reducer";
-
 
 class UsersC extends React.Component{
 
@@ -56,32 +53,24 @@ class UsersC extends React.Component{
                                     </div>
                                     <div>
                                         {u.followed
-                                            ? <button onClick={() => {
-                                                this.props.setSubscribing({subscribing: true, id: u.id})
-
+                                            ? <button disabled={this.props.subscribing.some(id => id === u.id)} onClick={() => {
+                                                this.props.setSubscribing(true, u.id)
                                                 UserAPI.unfollowUser(u.id).then( response => {
                                                     if(response.resultCode === 0 ){
                                                         this.props.unfollow(u.id);
                                                     }
-                                                }).catch(err => {
-                                                    alert(err);
-                                                    this.props.setSubscribing({subscribing: false, id: u.id});
+                                                    this.props.setSubscribing(false, u.id);
                                                 })
-                                                //debugger
-                                            }} disabled={this.props.subscribing.some(uId => uId === u.id)}>Unfollow</button>
-                                            : <button onClick={() => {
-                                                this.props.setSubscribing({subscribing: true, id: u.id})
+                                            }}>Unfollow</button>
+                                            : <button disabled={this.props.subscribing.some(id => id === u.id)} onClick={() => {
+                                                this.props.setSubscribing(true, u.id)
                                                 UserAPI.followUser(u.id).then( response => {
                                                     if(response.resultCode === 0 ){
                                                         this.props.follow(u.id)
                                                     }
-
-                                                }).catch(err => {
-                                                    alert(err);
-                                                    this.props.setSubscribing({subscribing: false, id: u.id});
-
+                                                    this.props.setSubscribing(false, u.id);
                                                 })
-                                            }} disabled={this.props.subscribing.some(uId => uId === u.id)}>Follow</button>}
+                                            }} >Follow</button>}
                                     </div>
                                 </div>
 
