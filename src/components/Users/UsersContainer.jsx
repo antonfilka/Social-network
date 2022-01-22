@@ -1,14 +1,5 @@
-
 import {connect} from "react-redux";
-import {
-    follow,
-    setCurrentPage,
-    setIsFetching,
-    setSubscribing,
-    setTotalUsers,
-    setUsers,
-    unfollow
-} from "../../Redux/users-reducer";
+import {follow, loadUsers, setUsers, unfollow} from "../../Redux/users-reducer";
 import UsersC from "./UsersC";
 
 
@@ -24,4 +15,4 @@ let mapStateToProps = (state) => {
 }
 
 export const UsersContainer = connect(mapStateToProps,
-    {follow, unfollow, setUsers, setTotalUsers, setCurrentPage, setIsFetching})(UsersC);
+    {follow, unfollow, setUsers, loadUsers})(UsersC);

@@ -2,27 +2,15 @@ import React from 'react';
 import styles from './Users.module.css';
 import Preloader from "../../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
-import {UserAPI} from "../../api/api";
 
 class UsersC extends React.Component {
 
     componentDidMount() {
-        this.props.setIsFetching(true)
-        UserAPI.getUsers(this.props.currentPage, this.props.screenSize).then(response => {
-            this.props.setUsers(response.items);
-            this.props.setTotalUsers(response.totalCount)
-            this.props.setIsFetching(false)
-        })
+        this.props.setUsers(this.props.currentPage, this.props.screenSize);
     }
 
     onChange = (pageNumber) => {
-        this.props.setIsFetching(true)
-        this.props.setCurrentPage(pageNumber)
-
-        UserAPI.getUsers2(pageNumber, this.props.screenSize).then(response => {
-            this.props.setUsers(response.items);
-            this.props.setIsFetching(false)
-        })
+        this.props.loadUsers(pageNumber, this.props.screenSize)
     }
 
     render() {

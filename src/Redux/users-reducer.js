@@ -58,7 +58,6 @@ export const usersReducer = (state = initialState, action) => {
                     : state.subscribing.filter(id => id !== action.userId)
             }
         }
-
         default:
             return state;
 
@@ -68,12 +67,34 @@ export const usersReducer = (state = initialState, action) => {
 
 export const followSuccess = (userId) => ({type: FOLLOW, userId});
 export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId});
-export const setUsers = (users) => ({type: SET_USERS, users});
+export const setUsersSuccess = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const setTotalUsers = (totalUsers) => ({type: SET_TOTAL_USERS, totalUsers});
 export const setIsFetching = (isFetching) => ({type: SET_IS_FETCHING, isFetching});
 export const setSubscribing = (isFetching, userId) => ({type: SET_SUBSCRIBING, isFetching, userId});
 
+
+export const setUsers = (currentPage, screenSize) => {
+    return (dispatch) => {
+        dispatch(setIsFetching(true));
+        UserAPI.getUsers(currentPage, screenSize).then(response => {
+            dispatch(setUsersSuccess(response.items));
+            dispatch(setTotalUsers(response.totalCount));
+            dispatch(setIsFetching(false));
+        })
+    }
+}
+
+export const loadUsers = (pageNumber, screenSize) => {
+    return (dispatch) => {
+        dispatch(setIsFetching(true));
+        dispatch(setCurrentPage(pageNumber));
+        UserAPI.getUsers2(pageNumber, screenSize).then(response => {
+            dispatch(setUsersSuccess(response.items));
+            dispatch(setIsFetching(false));
+        })
+    }
+}
 
 export const follow = (userId) => {
     return (dispatch) => {
