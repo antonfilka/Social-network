@@ -4,7 +4,6 @@ import Preloader from "../../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
 
 class UsersC extends React.Component {
-
     componentDidMount() {
         this.props.setUsers(this.props.currentPage, this.props.screenSize);
     }
