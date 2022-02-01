@@ -1,4 +1,4 @@
 # Social network
 
 
-React application
+React - Redux application
